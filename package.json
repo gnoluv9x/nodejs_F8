@@ -5,7 +5,7 @@
     "main": "src/index.js",
     "scripts": {
         "start": "nodemon --inspect src/index.js",
-        "watch" : "node-sass --watch src/resource/scss/ --output src/public/css/",
+        "watch": "node-sass --watch src/resource/scss/ --output src/public/css/",
         "beautiful": "prettier --single-quote --tab-width 4 --trailing-comma all --write ./*.{js,json,scss}",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -14,7 +14,8 @@
     "license": "ISC",
     "dependencies": {
         "express": "^4.17.1",
-        "express-handlebars": "^5.3.3"
+        "express-handlebars": "^5.3.3",
+        "mongoose": "^6.0.6"
     },
     "devDependencies": {
         "node-sass": "^6.0.1",
