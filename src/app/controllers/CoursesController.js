@@ -1,6 +1,5 @@
 const Course = require('../models/Course');
 const { mongooseToObject} = require('../../util/mongoose');
-const { response } = require('express');
 
 class CoursesController {
 
@@ -30,6 +29,22 @@ class CoursesController {
             .catch(err => console.log(err));
     }
 
-}
+    // [POST] /courses/:id/edit
+    edit(req, res, next) {
+        Course.findById({ _id : req.params.id })
+        .then( course => res.render('courses/edit',{
+            course : mongooseToObject(course)
+        }))
+        .catch(next);
+    };
+
+    // [PUT] /courses/:id/
+    update(req, res, next) {
+        Course.updateOne({ _id : req.params.id }, req.body)
+            .then( course => res.redirect('/me/courses'))
+            .catch(next);
+    }
+
+};
 
 module.exports = new CoursesController;
