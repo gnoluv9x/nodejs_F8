@@ -1,5 +1,9 @@
 
 <table class="table">
+  <div class="courses-title">
+    <h3 class="text-center">Khoá học của tôi</h3>
+    <a href="/me/trash/courses"> <i class="fas fa-trash"></i> Thùng rác</a>
+  </div>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -17,18 +21,22 @@
       <td>{{this.level}}</td>
       <td>{{this.createdAt}}</td>
       <td>
-          <button href="/courses/{{this._id}}/edit" type="button" class="btn btn-link">Sửa</button>
-          <button id="delete-course-btn" href="#" type="button" class="btn btn-link" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-course-modal">Xoá</button>
+          <a href="/courses/{{this._id}}/edit" type="button" class="btn btn-link">Sửa</a>
+          <a id="delete-course-btn" href="#" type="button" class="btn btn-link" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-course-modal">Xoá</a>
       </td>
     </tr>
+    {{else}}
+      <tr>
+        <td colspan="5" class='text-center'>Bạn chưa sở hữu khoá học nào.
+          <a href="/course/create">Đăng ký ngay</a>
+        </td>
+      </tr>
     {{/each}}
   </tbody>
 </table>
 
-{{!-- Form to delete course --}}
-<form method="POST" id="delete-course-form">
-
-</form>
+{{!-- Form  --}}
+<form method="POST" id="delete-course-form"></form>
 
 {{!-- Open modal --}}
 <!-- Modal -->

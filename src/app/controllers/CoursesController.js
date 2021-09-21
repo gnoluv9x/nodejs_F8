@@ -12,7 +12,6 @@ class CoursesController {
                 })
             })
             .catch(next)
-
     };
 
     // [GET] /courses/create
@@ -22,11 +21,10 @@ class CoursesController {
 
     // [POST] /courses/stored
     stored(req, res, next) {
-        const formData = req.body;
-        formData.image = `https://img.youtube.com/vi/${formData.videoId}/hqdefault.jpg`
-        Course.create(formData)
-            .then( () =>  res.redirect('/'))
-            .catch(err => console.log(err));
+        req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/hqdefault.jpg`
+        Course.create(req.body)
+            .then( () =>  res.redirect('/me/courses'))
+            .catch(next);
     }
 
     // [POST] /courses/:id/edit
@@ -45,13 +43,27 @@ class CoursesController {
             .catch(next);
     };
 
-    // [PUT] /courses/:id/
+    // [DELETE] /courses/:id/
     delete(req, res, next) {
+        Course.delete({ _id : req.params.id })
+            .then( course => res.redirect('back'))
+            .catch(next);
+    };
+
+    // [DELETE] /courses/:id/force
+    forceDelete(req, res, next) {
         Course.deleteOne({ _id : req.params.id })
             .then( course => res.redirect('back'))
             .catch(next);
     };
 
+
+    // [PATCH] /courses/:id/restore
+    restore(req, res, next) {
+        Course.restore({ _id : req.params.id })
+            .then( course => res.redirect('back'))
+            .catch(next);
+    };
 };
 
 module.exports = new CoursesController;
