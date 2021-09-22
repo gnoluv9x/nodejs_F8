@@ -64,6 +64,40 @@ class CoursesController {
             .then( course => res.redirect('back'))
             .catch(next);
     };
+    
+    // [POST] /courses/handle-form-actions
+    handleFormActions(req, res, next) {
+        // res.json(req.body)
+        switch( req.body.action){
+            case 'delete' :
+                Course.delete({ _id : { $in : req.body.coursesId } })
+                    .then( course => res.redirect('back'))
+                    .catch(next);
+                break;
+            default :
+                res.json({ message: 'Invalid action' })
+        }
+    }
+
+    // [POST] /courses/handle-trash-actions
+    handleTrashActions(req, res, next) {
+
+        
+        switch( req.body.action){
+            case 'restore' :
+                Course.restore({ _id : { $in : req.body.coursesId } })
+                    .then( course => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'force-delete' :
+                Course.deleteMany({ _id : { $in : req.body.coursesId } })
+                    .then( course => res.redirect('back'))
+                    .catch(next);
+                break;
+            default :
+                res.json({ message: 'Invalid action' })
+        }
+    }
 };
 
 module.exports = new CoursesController;
