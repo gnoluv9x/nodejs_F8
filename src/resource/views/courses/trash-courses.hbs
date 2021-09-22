@@ -21,7 +21,7 @@
             <option value="force-delete">Xoá vĩnh viễn</option>
           </select>
   
-          <button type="submit" class="btn btn-primary btn-handler-form-actions disabled">Hành động</button>
+          <button type="submit" class="btn btn-primary btn-handler-form-actions" disabled="disabled">Hành động</button>
         </div>
     <thead>
       <tr>
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var deleteCourseBtn = document.getElementById('confirm-delete-course-btn');
     var formDeleteCourse = document.forms['delete-course-form'];
     var formRestoreCourse = document.forms['restore-course-form'];
-    var formActions = document.forms['trash-actions']
+    var formTrashActions = document.forms['trash-actions']
     var restoreCourseBtn = $('.restore-Course-btn');
     var checkboxCourseItem = $('input[name="coursesId[]"]');
     var checkboxAll = $('#checkbox-all');
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     // Prevent button submit:
-    formActions.addEventListener('submit', function (e) {
+    formTrashActions.addEventListener('submit', function (e) {
 
       const isDisableStatusBtn = btnHandlerFormAction.hasClass('disabled');
       if(isDisableStatusBtn) {
@@ -161,9 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const checkedCount = $('input[name="coursesId[]"]:checked').length;
       if ( checkedCount > 0 ) {
-        btnHandlerFormAction.removeClass('disabled');
+        btnHandlerFormAction.attr('disabled', false);
       }else{
-        btnHandlerFormAction.addClass('disabled');
+        btnHandlerFormAction.attr('disabled', true);
       }
 
     }
