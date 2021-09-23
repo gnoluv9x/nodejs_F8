@@ -11,6 +11,14 @@ h2{
     color:blue
 }
 
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.size-input-checkbox {
+    transform: scale(1.5);
+}
+
 .user-avatar{
     height: 1.5rem;
     width: 1.5rem;

@@ -23,7 +23,7 @@ class CoursesController {
     stored(req, res, next) {
         req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/hqdefault.jpg`
         Course.create(req.body)
-            .then( () =>  res.redirect('/me/courses'))
+            .then( () =>  res.redirect('/me/stored/courses'))
             .catch(next);
     }
 
