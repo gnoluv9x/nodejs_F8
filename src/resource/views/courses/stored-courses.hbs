@@ -21,13 +21,24 @@
   
       <button type="submit" class="btn btn-primary btn-handler-form-actions" disabled="disabled">Hành động</button>
     </div>
-  
+
+    {{_sort.column}}
+
     <thead>
       <tr>
         <th scope="col" colspan="2">#</th>
-        <th scope="col">Tên</th>
-        <th scope="col">Trình độ</th>
-        <th scope="col">Ngày tạo</th>
+        <th scope="col">
+          Tên
+          {{{sortable 'name' _sort}}}
+        </th>
+        <th scope="col">
+          Trình độ
+          {{{sortable 'level' _sort}}}
+        </th>
+        <th scope="col">
+          Ngày tạo
+          {{{sortable 'createdAt' _sort}}}
+        </th>
         <th scope="col">Hành động</th>
       </tr>
     </thead>
