@@ -13,7 +13,7 @@ class CoursesController {
             })
             .catch(next)
     };
-
+    
     // [GET] /courses/create
     create(req, res, next) {
         res.render('courses/create')
